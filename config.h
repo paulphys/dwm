@@ -7,21 +7,21 @@
 /* appearance */
 static unsigned int borderpx  = 1;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
-static unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static unsigned int gappov    = 15;       /* vert outer gap between windows and screen edge */
+static unsigned int gappih    = 30;       /* horiz inner gap between windows 20 */
+static unsigned int gappiv    = 20;       /* vert inner gap between windows  10*/
+static unsigned int gappoh    = 60;       /* horiz outer gap between windows and screen edge 10 */
+static unsigned int gappov    = 60;       /* vert outer gap between windows and screen edge 10 */
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static char *fonts[]          = { "UbuntuMono-Regular:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"  };
-static char normbgcolor[]           = "#000";
-static char normbordercolor[]       = "#000";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#bbbbbb";
-static char selbordercolor[]        = "#000";
-static char selbgcolor[]            = "#000";
+static char *fonts[]          = { "UbuntuMono-Regular:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true"};
+static char normbgcolor[]           = "#97c6f4"; /* 000 ccdacd*/
+static char normbordercolor[]       = "#151515";
+static char normfgcolor[]           = "#151515"; /* bbbbbb */
+static char selfgcolor[]            = "#151515"; /* bbbbbb */
+static char selbordercolor[]        = "#151515";
+static char selbgcolor[]            = "#97c6f4"; /* 000  ccdacd 97c6f4*/
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -171,7 +171,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_u,		setlayout,	{.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,			XK_i,		setlayout,	{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,		setlayout,	{.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY,			XK_o,		spawn,     	SHCMD("obsidian") },
+	{ MODKEY,			XK_o,		spawn,     	SHCMD(TERMINAL " -e ~/data/unsorted/dump/Obsidian-0.12.19.AppImage") }, /* SHCMD("obsidian")  */
 	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
 	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("mpc seek -10") },
@@ -183,6 +183,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_s,		spawn,		SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_d,		spawn,          SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD(TERMINAL " -e ~/.local/share/Discord/Discord") },
+	{ MODKEY|ShiftMask, 	XK_g, spawn, SHCMD("brave --incognito https://www.nytimes.com/games/wordle/index.html https://www.nytimes.com/crosswords/game/mini https://worldle.teuteuf.fr/ https://emovi.teuteuf.fr/")},
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
@@ -201,7 +202,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_y,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_c,		spawn,		SHCMD(TERMINAL " -e ~/.local/share/vscode/code") }, 
 	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
